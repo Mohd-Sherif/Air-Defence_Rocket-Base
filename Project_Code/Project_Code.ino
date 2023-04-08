@@ -13,3 +13,21 @@
  * 
  * @author Mohamed Sherif
  */
+
+// Shift-Registers
+#define DATA_PIN 8
+#define SH_CP_PIN 6
+#define ST_CP_PIN 7
+byte arr[] = {
+  0b00000000, 
+  0b00000001, 
+  0b00000011, 
+  0b00000111, 
+  0b00001111, 
+  0b00011111, 
+  0b00111111, 
+  0b01111111, 
+  0b11111111
+  };
+char readyCtr = 0;
+char fireCtr = 0;
