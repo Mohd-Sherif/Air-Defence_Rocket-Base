@@ -45,8 +45,17 @@ char fireCtr = 0;
 #define IN2 9
 #define ENA 6
 
+// Servo-Motor
+#include <Servo.h>
+#define SERVO 12
+Servo myServo;
+char pos = 0;
+
   // DC-Motor Configurations
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(ENA, OUTPUT);
 
+  // Servo-Motor Configurations
+  myServo.attach(SERVO);
+  myServo.write(90);
