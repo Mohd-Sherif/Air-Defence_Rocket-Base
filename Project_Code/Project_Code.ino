@@ -177,3 +177,26 @@ void stopMotor(){
   digitalWrite(IN2, LOW);
 }
 
+// Servo-Motor Functions
+
+/**
+ * Controls the Servo-Motor's angle to increase it up.
+ * 
+ * @param void
+ * @return void
+ */
+void angleUp(){
+  myServo.write(++pos);
+  delay(30);
+}
+
+/**
+ * Controls the Servo-Motor's angle to decrease it down.
+ * 
+ * @param void
+ * @return void
+ */
+void angleDown(){
+  myServo.write(--pos);
+  delay(30);
+}
