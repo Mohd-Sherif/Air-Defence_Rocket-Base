@@ -35,3 +35,18 @@ char fireCtr = 0;
 // Buttons
 #define FIRE_BUTTON 3
 
+// Joystick
+#define SW 2
+#define X A0
+#define Y A1
+
+// DC-Motor
+#define IN1 10
+#define IN2 9
+#define ENA 6
+
+  // DC-Motor Configurations
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(ENA, OUTPUT);
+
