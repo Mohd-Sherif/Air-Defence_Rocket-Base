@@ -31,3 +31,7 @@ byte arr[] = {
   };
 char readyCtr = 0;
 char fireCtr = 0;
+
+// Buttons
+#define FIRE_BUTTON 3
+
