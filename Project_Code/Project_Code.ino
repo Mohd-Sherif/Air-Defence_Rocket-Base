@@ -100,5 +100,14 @@ void loop() {
     stopMotor();
   }
 
+  // Servo-Motor
+  if(y > 600 && pos < 157){
+    angleUp();
+  }
+  else if(y < 400 && pos > 80){
+    angleDown();
+  }
+}
+
 }
 
