@@ -89,5 +89,16 @@ void loop() {
   // Reading joystick Y-Axis value
   double y = analogRead(Y);
 
+  // DC-Motor Behavior
+  if(x < 400){
+    rotateLeft(x);
+  }
+  else if(x > 600){
+    rotateRight(x);
+  }
+  else{
+    stopMotor();
+  }
+
 }
 
