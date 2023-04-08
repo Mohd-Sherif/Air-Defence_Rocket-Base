@@ -137,3 +137,31 @@ void fireISR(){
   }
 }
 
+// DC-Motor Functions
+
+/**
+ * Controls the DC-Motor to rotate left with respect to the value of 
+ * the sliding value of the joystick X-Axis.
+ * 
+ * @param rotatingSpeed used to control the speed of rotating of the motor.
+ * @return void
+ */
+void rotateLeft(double rotatingSpeed){
+  analogWrite(ENA, map(1023 - rotatingSpeed, 0, 1023, 0, 255));
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+}
+
+/**
+ * Controls the DC-Motor to rotate right with respect to the value of 
+ * the sliding value of the joystick X-Axis.
+ * 
+ * @param rotatingSpeed used to control the speed of rotating of the motor.
+ * @return void
+ */
+void rotateRight(double rotatingSpeed){
+  analogWrite(ENA, map(rotatingSpeed, 0, 1023, 0, 255));
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+}
+
