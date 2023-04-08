@@ -51,6 +51,23 @@ char fireCtr = 0;
 Servo myServo;
 char pos = 0;
 
+/**
+ * Configurations Function.
+ * Operates only one time in the beginning of executing the code.
+ */
+void setup() {
+  // Shift-Registers Configurations
+  pinMode(DATA_PIN, OUTPUT);
+  pinMode(SH_CP_PIN, OUTPUT);
+  pinMode(ST_CP_PIN, OUTPUT);
+
+  // Buttons Configurations
+  pinMode(SW, INPUT_PULLUP);
+  pinMode(FIRE_BUTTON, INPUT_PULLUP);
+  // Enabling Interrupt
+  attachInterrupt(digitalPinToInterrupt(SW), readyISR, FALLING);
+  attachInterrupt(digitalPinToInterrupt(FIRE_BUTTON), fireISR, FALLING);
+
   // DC-Motor Configurations
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
@@ -59,3 +76,5 @@ char pos = 0;
   // Servo-Motor Configurations
   myServo.attach(SERVO);
   myServo.write(90);
+}
+
