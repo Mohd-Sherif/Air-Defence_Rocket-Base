@@ -78,3 +78,10 @@ void setup() {
   myServo.write(90);
 }
 
+/**
+ * Main behavior of the Application.
+ * Continously Repeated until the power off.
+ */
+void loop() {
+}
+
