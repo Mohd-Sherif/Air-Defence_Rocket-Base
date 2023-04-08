@@ -109,5 +109,31 @@ void loop() {
   }
 }
 
+// ISR
+
+/**
+ * Interrupt Service Routine for Ready LEDs in the Control Tower
+ * Indicates that the rockets are ready to be fired if the yellow LEDs Emits.
+ */
+void readyISR(){
+  if(readyCtr <= fireCtr && readyCtr != 8){
+    readyCtr++;
+    digitalWrite(ST_CP_PIN, LOW);
+    shiftOut(DATA_PIN, SH_CP_PIN, LSBFIRST, arr[readyCtr]);
+    digitalWrite(ST_CP_PIN, HIGH);
+  }
+}
+
+/**
+ * Interrupt Service Routine for Fire LEDs on the Car.
+ * Indicates that the rockets are fired if the red LED Emits.
+ */
+void fireISR(){
+  if(fireCtr < readyCtr && fireCtr != 8){
+    fireCtr++;
+    digitalWrite(ST_CP_PIN, LOW);
+    shiftOut(DATA_PIN, SH_CP_PIN, LSBFIRST, arr[fireCtr]);
+    digitalWrite(ST_CP_PIN, HIGH);
+  }
 }
 
