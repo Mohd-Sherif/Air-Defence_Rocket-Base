@@ -165,3 +165,15 @@ void rotateRight(double rotatingSpeed){
   digitalWrite(IN2, LOW);
 }
 
+/**
+ * Stops the DC-Motor.
+ * 
+ * @param void
+ * @return void
+ */
+void stopMotor(){
+  analogWrite(ENA, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+}
+
