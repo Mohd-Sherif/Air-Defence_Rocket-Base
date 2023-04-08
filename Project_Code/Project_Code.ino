@@ -83,5 +83,11 @@ void setup() {
  * Continously Repeated until the power off.
  */
 void loop() {
+  // Recieving the values of Joystick
+  // Reading joystick X-Axis value
+  double x = analogRead(X);
+  // Reading joystick Y-Axis value
+  double y = analogRead(Y);
+
 }
 
