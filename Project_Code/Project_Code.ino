@@ -33,10 +33,10 @@ char readyCtr = 0;
 char fireCtr = 0;
 
 // Buttons
-#define FIRE_BUTTON 3
+#define FIRE_BUTTON 2
 
 // Joystick
-#define SW 2
+#define SW 3
 #define X A0
 #define Y A1
 
