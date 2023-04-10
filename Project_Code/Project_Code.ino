@@ -33,10 +33,10 @@ char readyCtr = 0;
 char fireCtr = 0;
 
 // Buttons
+#define READY_BUTTON 3
 #define FIRE_BUTTON 2
 
 // Joystick
-#define SW 3
 #define X A0
 #define Y A1
 
@@ -62,10 +62,10 @@ void setup() {
   pinMode(ST_CP_PIN, OUTPUT);
 
   // Buttons Configurations
-  pinMode(SW, INPUT_PULLUP);
+  pinMode(READY_BUTTON, INPUT_PULLUP);
   pinMode(FIRE_BUTTON, INPUT_PULLUP);
   // Enabling Interrupt
-  attachInterrupt(digitalPinToInterrupt(SW), readyISR, FALLING);
+  attachInterrupt(digitalPinToInterrupt(READY_BUTTON), readyISR, FALLING);
   attachInterrupt(digitalPinToInterrupt(FIRE_BUTTON), fireISR, FALLING);
 
   // DC-Motor Configurations
