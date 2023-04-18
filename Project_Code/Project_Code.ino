@@ -75,7 +75,7 @@ void setup() {
 
   // Servo-Motor Configurations
   myServo.attach(SERVO);
-  myServo.write(90);
+  myServo.write(0);
 }
 
 /**
@@ -88,7 +88,7 @@ void loop() {
   double x = analogRead(X);
   // Reading joystick Y-Axis value
   double y = analogRead(Y);
-
+  
   // DC-Motor Behavior
   if(x < 400){
     rotateLeft(x);
@@ -101,11 +101,11 @@ void loop() {
   }
 
   // Servo-Motor
-  if(y > 600 && pos < 157){
-    angleUp();
-  }
-  else if(y < 400 && pos > 80){
+  if(y > 600 && pos > 0){
     angleDown();
+  }
+  else if(y < 400 && pos < 180){
+    angleUp();
   }
 }
 
@@ -147,7 +147,7 @@ void fireISR(){
  * @return void
  */
 void rotateLeft(double rotatingSpeed){
-  analogWrite(ENA, map(1023 - rotatingSpeed, 0, 1023, 0, 255));
+  analogWrite(ENA, map(1023 - rotatingSpeed - 900, 0, 1023, 0, 255));
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 }
@@ -160,7 +160,7 @@ void rotateLeft(double rotatingSpeed){
  * @return void
  */
 void rotateRight(double rotatingSpeed){
-  analogWrite(ENA, map(rotatingSpeed, 0, 1023, 0, 255));
+  analogWrite(ENA, map(rotatingSpeed - 900, 0, 1023, 0, 255));
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
 }
@@ -186,8 +186,9 @@ void stopMotor(){
  * @return void
  */
 void angleUp(){
-  myServo.write(++pos);
-  delay(30);
+  pos++;
+  myServo.write(pos);
+  delay(50);
 }
 
 /**
@@ -197,6 +198,7 @@ void angleUp(){
  * @return void
  */
 void angleDown(){
-  myServo.write(--pos);
-  delay(30);
+  pos--;
+  myServo.write(pos);
+  delay(50);
 }
