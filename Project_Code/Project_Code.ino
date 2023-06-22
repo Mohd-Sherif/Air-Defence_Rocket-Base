@@ -36,6 +36,8 @@ char fireCtr = 0;
 // Servo-Motor
 #include <Servo.h>
 #define SERVO 12
+#define UPPER_LIMIT 120
+#define LOWER_LIMIT 0
 Servo myServo;
 char pos = 0;
 
@@ -57,6 +59,7 @@ void setup() {
   // Buttons Configurations
   pinMode(READY_BUTTON, INPUT_PULLUP);
   pinMode(FIRE_BUTTON, INPUT_PULLUP);
+  
   // Enabling Interrupt
   attachInterrupt(digitalPinToInterrupt(READY_BUTTON), readyISR, FALLING);
   attachInterrupt(digitalPinToInterrupt(FIRE_BUTTON), fireISR, FALLING);
@@ -83,21 +86,21 @@ void loop() {
   double y = analogRead(Y);
   
   // DC-Motor Behavior
-  if(x < 400){
+  if(x < 300){
     rotateLeft(x);
   }
-  else if(x > 600){
+  else if(x > 700){
     rotateRight(x);
   }
   else{
     stopMotor();
   }
 
-  if(y > 600 && pos > 0){
   // Servo-Motor Behavior
+  if(y > 700 && pos > LOWER_LIMIT){
     angleDown();
   }
-  else if(y < 400 && pos < 180){
+  else if(y < 300 && pos < UPPER_LIMIT){
     angleUp();
   }
 }
