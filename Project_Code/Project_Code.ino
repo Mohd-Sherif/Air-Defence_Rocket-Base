@@ -76,7 +76,7 @@ void setup() {
  * Continously Repeated until the power off.
  */
 void loop() {
-  // Recieving the values of Joystick
+  // Recieving the values from Joystick
   // Reading joystick X-Axis value
   double x = analogRead(X);
   // Reading joystick Y-Axis value
@@ -93,8 +93,8 @@ void loop() {
     stopMotor();
   }
 
-  // Servo-Motor
   if(y > 600 && pos > 0){
+  // Servo-Motor Behavior
     angleDown();
   }
   else if(y < 400 && pos < 180){
