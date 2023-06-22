@@ -1,16 +1,4 @@
 /**
- * A Rocket-Base simulation, by LEDs instead of Rockets, that can rotates 360 degrees
- * around X-Axis and 77 degrees around Y-Axis. There're button, Joystick, Servo-Motor,
- * DC-Motor and 16 LEDs (8 Red LEDs & 8 Yellow LEDs).
- * 
- * Operation:-
- * By moving the joystick up and down, the rockets goes up and down, respectively.
- * By moving the joystick right and left, the Base rotates right and left, respectively.
- * By pressing on the joystick button, a yellow LED will emit light that indicates that the
- * corrosponding rocket is ready to be fired.
- * By pressing on the seperate button, a red LED will emit light 
- * -only when corrosponding yellow LED emits- that indicates that the corrosponding rocket is fired.
- * 
  * @author Mohamed Sherif
  */
 
@@ -139,38 +127,18 @@ void fireISR(){
 
 // DC-Motor Functions
 
-/**
- * Controls the DC-Motor to rotate left with respect to the value of 
- * the sliding value of the joystick X-Axis.
- * 
- * @param rotatingSpeed used to control the speed of rotating of the motor.
- * @return void
- */
 void rotateLeft(double rotatingSpeed){
   analogWrite(ENA, map(1023 - rotatingSpeed - 900, 0, 1023, 0, 255));
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 }
 
-/**
- * Controls the DC-Motor to rotate right with respect to the value of 
- * the sliding value of the joystick X-Axis.
- * 
- * @param rotatingSpeed used to control the speed of rotating of the motor.
- * @return void
- */
 void rotateRight(double rotatingSpeed){
   analogWrite(ENA, map(rotatingSpeed - 900, 0, 1023, 0, 255));
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
 }
 
-/**
- * Stops the DC-Motor.
- * 
- * @param void
- * @return void
- */
 void stopMotor(){
   analogWrite(ENA, LOW);
   digitalWrite(IN1, LOW);
@@ -179,24 +147,12 @@ void stopMotor(){
 
 // Servo-Motor Functions
 
-/**
- * Controls the Servo-Motor's angle to increase it up.
- * 
- * @param void
- * @return void
- */
 void angleUp(){
   pos++;
   myServo.write(pos);
   delay(50);
 }
 
-/**
- * Controls the Servo-Motor's angle to decrease it down.
- * 
- * @param void
- * @return void
- */
 void angleDown(){
   pos--;
   myServo.write(pos);
