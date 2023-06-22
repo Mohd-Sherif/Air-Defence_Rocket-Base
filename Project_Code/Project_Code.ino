@@ -49,6 +49,11 @@ void setup() {
   pinMode(SH_CP_PIN, OUTPUT);
   pinMode(ST_CP_PIN, OUTPUT);
 
+  // Initially LEDs are OFF
+  digitalWrite(ST_CP_PIN, LOW);
+  shiftOut(DATA_PIN, SH_CP_PIN, LSBFIRST, 0);
+  digitalWrite(ST_CP_PIN, HIGH);
+
   // Buttons Configurations
   pinMode(READY_BUTTON, INPUT_PULLUP);
   pinMode(FIRE_BUTTON, INPUT_PULLUP);
